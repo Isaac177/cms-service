@@ -1,3 +1,5 @@
+// schema.prisma
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,6 +13,7 @@ model Classroom {
   id        Int        @id @default(autoincrement())
   name      String
   subject   String
+  image     String
   students  Student[]
   schedules Schedule[]
 }
@@ -19,6 +22,7 @@ model Student {
   id            Int       @id @default(autoincrement())
   name          String
   email         String    @unique
+  image         String
   enrolledClass Classroom @relation(fields: [classroomId], references: [id])
   classroomId   Int
 }
